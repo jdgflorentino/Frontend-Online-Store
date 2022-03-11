@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import Categorias from '../components/Categorias';
 
 class Home extends Component {
   constructor() {
@@ -23,8 +25,10 @@ class Home extends Component {
 
   render() {
     const { inputValue, resultApi } = this.state;
+    const { allCategories } = this.props;
     return (
       <div>
+        <Categorias allCategories={ allCategories } />
         <label htmlFor="pesquisa">
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
@@ -65,5 +69,8 @@ class Home extends Component {
     );
   }
 }
+Home.propTypes = {
+  allCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Home;
