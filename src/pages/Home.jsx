@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ShoppingCartButton from '../components/ShoppingCartButton';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getProductsFromCategory, getProductsFromQuery } from '../services/api';
 import Categorias from '../components/Categorias';
 
 class Home extends Component {
@@ -17,9 +17,15 @@ class Home extends Component {
     this.setState({ inputValue: event.target.value });
   }
 
+  handleCategory = async ({ target }) => {
+    const { id } = target;
+    const dataCategory = await getProductsFromCategory({ id });
+    this.setState({ resultApi: dataCategory.results });
+  }
+
   searchButton = async () => {
     const { inputValue } = this.state;
-    const results = await getProductsFromCategoryAndQuery('bigua', inputValue);
+    const results = await getProductsFromQuery(inputValue);
     this.setState({ resultApi: results.results });
   }
 
@@ -28,7 +34,10 @@ class Home extends Component {
     const { allCategories } = this.props;
     return (
       <div>
-        <Categorias allCategories={ allCategories } />
+        <Categorias
+          allCategories={ allCategories }
+          handleCategory={ this.handleCategory }
+        />
         <label htmlFor="pesquisa">
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
