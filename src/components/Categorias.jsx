@@ -12,6 +12,7 @@ class Categorias extends Component {
               <input
                 id={ category.id }
                 type="radio"
+                name="category"
                 onClick={ handleCategory }
               />
               { category.name }
