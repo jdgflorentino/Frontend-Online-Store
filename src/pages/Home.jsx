@@ -19,8 +19,8 @@ class Home extends Component {
 
   handleCategory = async ({ target }) => {
     const { id } = target;
-    const dataCategory = await getProductsFromCategory({ id });
-    this.setState({ resultApi: dataCategory.results });
+    const data = await getProductsFromCategory(id);
+    this.setState({ resultApi: data.results });
   }
 
   searchButton = async () => {
