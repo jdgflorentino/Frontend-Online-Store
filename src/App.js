@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
+import ProductsDetails from './pages/ProductsDetails';
 import * as api from './services/api';
 
 class App extends React.Component {
@@ -19,7 +20,6 @@ class App extends React.Component {
 
   async handleAllCategories() {
     const dataCategories = await api.getCategories();
-    console.log(dataCategories);
     this.setState({
       allCategories: dataCategories,
     });
@@ -37,6 +37,7 @@ class App extends React.Component {
           />) }
         />
         <Route exact path="/ShoppingCart" component={ ShoppingCart } />
+        <Route exact path="/Products/:id" component={ ProductsDetails } />
       </BrowserRouter>
     );
   }
