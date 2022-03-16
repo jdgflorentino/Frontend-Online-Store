@@ -6,11 +6,14 @@ import { getProductsFromCategory, getProductsFromQuery } from '../services/api';
 import Categorias from '../components/Categorias';
 
 class Home extends Component {
+  userData;
+
   constructor() {
     super();
     this.state = {
       inputValue: '',
       resultApi: [],
+      cart: [],
     };
   }
 
@@ -31,9 +34,19 @@ class Home extends Component {
     this.setState({ resultApi: results.results });
   }
 
+  addCart = (e) => {
+    const { resultApi } = this.state;
+    const itemsCart = resultApi.filter((el) => el.id === e.target.name);
+
+    this.setState((ea) => ({
+      cart: [...ea.cart, ...itemsCart],
+    }));
+  }
+
   render() {
-    const { inputValue, resultApi } = this.state;
+    const { inputValue, resultApi, cart } = this.state;
     const { allCategories } = this.props;
+
     return (
       <div>
         <Categorias
@@ -80,17 +93,19 @@ class Home extends Component {
                     {element.price}
                   </div>
                   <img src={ element.thumbnail } alt={ element.title } />
-                  <button
-                    type="button"
-                    data-testid="product-add-to-cart"
-                  >
-                    Enviar para o carrinho
-                  </button>
                 </Link>
+                <button
+                  type="button"
+                  data-testid="product-add-to-cart"
+                  onClick={ this.addCart }
+                  name={ element.id }
+                >
+                  Enviar para o carrinho
+                </button>
               </div>
             ))}
         </div>
-        <ShoppingCartButton />
+        <ShoppingCartButton cart={ cart } />
       </div>
     );
   }
