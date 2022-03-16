@@ -83,7 +83,10 @@ class Home extends Component {
               >
                 <Link
                   key={ element.id }
-                  to={ `Products/${element.id}` }
+                  to={ {
+                    pathname: `Products/${element.id}`,
+                    state: { cart },
+                  } }
                   data-testid="product-detail-link"
                 >
                   <div>
