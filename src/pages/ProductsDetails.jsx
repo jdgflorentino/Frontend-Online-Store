@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropType from 'prop-types';
 import { getProductsFromProductId } from '../services/api';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 
 class ProductsDetails extends Component {
   constructor() {
@@ -17,8 +18,20 @@ class ProductsDetails extends Component {
     this.setState({ productInfos: productResponses });
   }
 
+  addCart = () => {
+    const { productInfos } = this.state;
+    const { location } = this.props;
+    const { state } = location;
+    const { cart } = state;
+
+    cart.push(productInfos);
+  }
+
   render() {
     const { productInfos } = this.state;
+    const { location } = this.props;
+    const { state } = location;
+    const { cart } = state;
     return (
       <>
         <h3 data-testid="product-detail-name">
@@ -33,10 +46,13 @@ class ProductsDetails extends Component {
         <img src={ productInfos.thumbnail } alt={ productInfos.title } />
         <button
           type="button"
+          onClick={ this.addCart }
+          name={ productInfos.id }
           data-testid="product-detail-add-to-cart"
         >
           Enviar para o carrinho
         </button>
+        <ShoppingCartButton cart={ cart } />
       </>
     );
   }
