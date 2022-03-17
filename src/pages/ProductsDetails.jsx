@@ -1,37 +1,40 @@
 import React, { Component } from 'react';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 import { getProductsFromProductId } from '../services/api';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 
 class ProductsDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { location: { state } } = this.props;
+    const { cart } = state;
     this.state = {
       productInfos: [],
+      cart,
     };
   }
 
   async componentDidMount() {
     const { match } = this.props;
     const productResponses = await getProductsFromProductId(match.params.id);
-    console.log(productResponses);
     this.setState({ productInfos: productResponses });
   }
 
   addCart = () => {
-    const { productInfos } = this.state;
-    const { location } = this.props;
-    const { state } = location;
-    const { cart } = state;
-
-    cart.push(productInfos);
+    const { productInfos, cart } = this.state;
+    const product = cart.find((item) => item.id === productInfos.id);
+    if (!product) {
+      productInfos.quantity = 1;
+      this.setState((prevState) => ({ cart: [...prevState.cart, productInfos] }));
+    } else {
+      const index = cart.indexOf(product);
+      cart[index].quantity += 1;
+      this.setState({ cart });
+    }
   }
 
   render() {
-    const { productInfos } = this.state;
-    const { location } = this.props;
-    const { state } = location;
-    const { cart } = state;
+    const { productInfos, cart } = this.state;
     return (
       <>
         <h3 data-testid="product-detail-name">
@@ -47,7 +50,7 @@ class ProductsDetails extends Component {
         <button
           type="button"
           onClick={ this.addCart }
-          name={ productInfos.id }
+          id={ productInfos.id }
           data-testid="product-detail-add-to-cart"
         >
           Enviar para o carrinho
@@ -59,7 +62,8 @@ class ProductsDetails extends Component {
 }
 
 ProductsDetails.propTypes = {
-  match: PropType.object,
+  match: PropTypes.object,
+  cart: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
 export default ProductsDetails;

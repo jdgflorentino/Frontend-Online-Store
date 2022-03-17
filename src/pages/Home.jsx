@@ -30,17 +30,20 @@ class Home extends Component {
   searchButton = async () => {
     const { inputValue } = this.state;
     const results = await getProductsFromQuery(inputValue);
-    console.log(results);
     this.setState({ resultApi: results.results });
   }
 
-  addCart = (e) => {
-    const { resultApi } = this.state;
-    const itemsCart = resultApi.filter((el) => el.id === e.target.name);
-
-    this.setState((ea) => ({
-      cart: [...ea.cart, ...itemsCart],
-    }));
+  addCart = ({ target }) => {
+    const { resultApi, cart } = this.state;
+    const itemCart = resultApi.find((item) => item.id === target.id);
+    const isInCart = cart.some((item) => item.id === itemCart.id);
+    console.log(isInCart);
+    if (!isInCart) {
+      itemCart.quantity = 1;
+      this.setState((prevState) => ({ cart: [...prevState.cart, itemCart] }));
+    } else {
+      itemCart.quantity += 1;
+    }
   }
 
   render() {
@@ -101,7 +104,7 @@ class Home extends Component {
                   type="button"
                   data-testid="product-add-to-cart"
                   onClick={ this.addCart }
-                  name={ element.id }
+                  id={ element.id }
                 >
                   Enviar para o carrinho
                 </button>
