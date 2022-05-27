@@ -1,0 +1,16 @@
+.body-container {
+  height: 266px;
+  min-width: 1200px;
+  position: relative;
+}
+
+.img-container {
+  height: 250px;
+  padding: 0 8px;
+  width: 384px;
+}
+
+.img-propaganda {
+  object-position: top;
+  position: absolute;
+}

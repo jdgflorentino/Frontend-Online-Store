@@ -1,0 +1,39 @@
+.container-header-infos {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+  height: 130px;
+  padding: 40px 0 40px 40px;
+  width: 1170px;
+}
+
+.container-logo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 150px;
+}
+
+.container-search {
+  flex-direction: column;
+  height: 42px;
+  top: 40px;
+  width: 500px;
+}
+
+.container-cart {
+  background-color: #f17e3a;
+  border-radius: 10px;
+  flex-direction: column;
+  height: 35px;
+  top: 40px;
+  width: 95px;
+}
+
+.logo-page {
+  color: #f17e3a;
+}

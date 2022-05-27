@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import ShoppingCartButton from '../components/ShoppingCartButton';
 import { getProductsFromCategory, getProductsFromQuery } from '../services/api';
 import Categorias from '../components/Categorias';
+import Propagandas from '../components/Propagandas';
+import Pagination from '../components/Pagination';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import '../styles/Home.css';
 
 class Home extends Component {
   userData;
@@ -14,30 +17,31 @@ class Home extends Component {
       inputValue: '',
       resultApi: [],
       cart: [],
+      categorie: '',
     };
   }
 
-  getValue = (event) => {
-    this.setState({ inputValue: event.target.value });
+  getValue = ({ target }) => {
+    const { value, name } = target;
+    this.setState({ [name]: value });
   }
+
+    searchButton = async () => {
+      const { inputValue } = this.state;
+      const results = await getProductsFromQuery(inputValue);
+      this.setState({ resultApi: results.results });
+    }
 
   handleCategory = async ({ target }) => {
     const { id } = target;
     const data = await getProductsFromCategory(id);
-    this.setState({ resultApi: data.results });
-  }
-
-  searchButton = async () => {
-    const { inputValue } = this.state;
-    const results = await getProductsFromQuery(inputValue);
-    this.setState({ resultApi: results.results });
+    this.setState({ resultApi: data.results, categorie: target.textContent });
   }
 
   addCart = ({ target }) => {
     const { resultApi, cart } = this.state;
     const itemCart = resultApi.find((item) => item.id === target.id);
     const isInCart = cart.some((item) => item.id === itemCart.id);
-    console.log(isInCart);
     if (!isInCart) {
       itemCart.quantity = 1;
       this.setState((prevState) => ({ cart: [...prevState.cart, itemCart] }));
@@ -47,71 +51,48 @@ class Home extends Component {
   }
 
   render() {
-    const { inputValue, resultApi, cart } = this.state;
+    const { resultApi, cart, categorie } = this.state;
     const { allCategories } = this.props;
 
     return (
-      <div>
+      <div className="container-home">
+        <header className="container-header">
+          <Header
+            cart={ cart }
+            getValue={ this.getValue }
+            searchButton={ this.searchButton }
+          />
+        </header>
         <Categorias
           allCategories={ allCategories }
           handleCategory={ this.handleCategory }
         />
-        <label htmlFor="pesquisa">
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <input
-            type="text"
-            id="pesquisa"
-            name="pesquisa"
-            value={ inputValue }
-            onChange={ this.getValue }
-            data-testid="query-input"
-          />
-        </label>
-        <button
-          type="submit"
-          data-testid="query-button"
-          onClick={ this.searchButton }
-        >
-          Pesquisar
-        </button>
-        <div>
-          <h4>Lista de produtos</h4>
-          {resultApi
-            .map((element) => (
-              <div
-                key={ element.id }
-                data-testid="product"
-              >
-                <Link
-                  key={ element.id }
-                  to={ {
-                    pathname: `Products/${element.id}`,
-                    state: { cart },
-                  } }
-                  data-testid="product-detail-link"
-                >
-                  <div>
-                    {element.title}
-                  </div>
-                  <div>
-                    {element.price}
-                  </div>
-                  <img src={ element.thumbnail } alt={ element.title } />
-                </Link>
-                <button
-                  type="button"
-                  data-testid="product-add-to-cart"
-                  onClick={ this.addCart }
-                  id={ element.id }
-                >
-                  Enviar para o carrinho
-                </button>
+        {resultApi.length > 0 ? (
+          <section className="container-products">
+            <span className="span-text">
+              { categorie }
+              {' '}
+            </span>
+            <Pagination
+              addCart={ this.addCart }
+              resultApi={ resultApi }
+              cart={ cart }
+            />
+          </section>
+        ) : (
+          <div>
+            <div className="container-propagandas">
+              <div className="div-propagandas">
+                <span className="span-text">Promoções para você</span>
               </div>
-            ))}
-        </div>
-        <ShoppingCartButton cart={ cart } />
+              <Propagandas />
+            </div>
+            <h1>Nenhum produto encontrado</h1>
+          </div>
+        )}
+        <footer className="container-footer">
+          <Footer />
+        </footer>
       </div>
     );
   }

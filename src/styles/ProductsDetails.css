@@ -1,0 +1,104 @@
+.container-details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 16px;
+}
+
+.panel {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 30fr 50fr 25fr;
+}
+
+.row-links {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 0;
+}
+
+a {
+  color: blue;
+  font-size: 14px;
+  padding: 2.5px 0;
+  text-decoration: none;
+}
+
+.second {
+  border-left: 1px solid #ddd;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.condition {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.row-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite {
+  flex-shrink: 0;
+  height: 25px;
+  margin-right: 15px;
+  width: 25px;
+}
+
+.row-name h1 {
+  font-size: 26px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.row-price {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  font-size: 25px;
+  font-weight: 300;
+  margin-top: 18px;
+}
+
+.fraction {
+  margin-left: 8.8px;
+}
+
+.stock {
+  font-size: 18px;
+  margin-top: 24px;
+}
+
+.delivery {
+  display: flex;
+  margin-top: 18px;
+}
+
+h6 {
+  color: #f17e3a;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.btn-cart {
+  background-color: blue;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+  padding: 12px 10px;
+}
