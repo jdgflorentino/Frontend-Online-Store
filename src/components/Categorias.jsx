@@ -11,6 +11,7 @@ class Categorias extends Component {
     const settings = {
       dots: false,
       infinite: false,
+      centermode: true,
       speed: 500,
       slidesToShow: 10,
       slidesToScroll: 5,

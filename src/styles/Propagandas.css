@@ -1,11 +1,11 @@
 .body-container {
   height: 266px;
-  min-width: 1200px;
+  min-width: 1260px;
   position: relative;
 }
 
 .img-container {
-  height: 250px;
+  height: 210px;
   padding: 0 8px;
   width: 384px;
 }

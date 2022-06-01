@@ -7,6 +7,7 @@ import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import '../styles/Home.css';
+import Recomendations from '../components/Recomendations';
 
 class Home extends Component {
   userData;
@@ -29,12 +30,14 @@ class Home extends Component {
     searchButton = async () => {
       const { inputValue } = this.state;
       const results = await getProductsFromQuery(inputValue);
+      console.log(results.results);
       this.setState({ resultApi: results.results });
     }
 
   handleCategory = async ({ target }) => {
     const { id } = target;
     const data = await getProductsFromCategory(id);
+    console.log(data.results);
     this.setState({ resultApi: data.results, categorie: target.textContent });
   }
 
@@ -80,15 +83,20 @@ class Home extends Component {
             />
           </section>
         ) : (
-          <div>
+          <section>
             <div className="container-propagandas">
               <div className="div-propagandas">
                 <span className="span-text">Promoções para você</span>
               </div>
               <Propagandas />
             </div>
-            <h1>Nenhum produto encontrado</h1>
-          </div>
+            <div className="container-recomendation">
+              <Recomendations
+                addCart={ this.addCart }
+                cart={ cart }
+              />
+            </div>
+          </section>
         )}
         <footer className="container-footer">
           <Footer />
