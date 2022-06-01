@@ -1,3 +1,6 @@
+## Projeto: Frontend Online Store
+
+
 Projeto desenvolvido em grupo com a metodologia ágil _Kanban_, em um cenário mais próximo ao do mercado de trabalho. Foi criado uma versão simplificada de uma **loja online**, em que os usuários poderão:
   - Buscar produtos por termos e categorias a partir da _API do Mercado Livre_;
   - Ver informações detalhadas do produto escolhido;
