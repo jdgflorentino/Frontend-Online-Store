@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Search from './Search';
 import ShoppingCartButton from './ShoppingCartButton';
-import rainbow from '../images/rainbow.png';
+import rainbow from '../images/rainbows.png';
 import '../styles/Header.css';
 
 class Header extends Component {
   render() {
-    const { getValue, searchButton, cart } = this.props;
+    const { getValue, searchButton, cart, totalProducts } = this.props;
     return (
       <div className="container-header-infos">
         <div className="container-logo">
@@ -21,7 +21,10 @@ class Header extends Component {
             searchButton={ searchButton }
           />
         </div>
-        <ShoppingCartButton cart={ cart } />
+        <ShoppingCartButton
+          cart={ cart }
+          totalProducts={ totalProducts }
+        />
       </div>
     );
   }
@@ -30,6 +33,7 @@ Header.propTypes = {
   searchButton: PropTypes.func.isRequired,
   getValue: PropTypes.func.isRequired,
   cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalProducts: PropTypes.number.isRequired,
 };
 
 export default Header;

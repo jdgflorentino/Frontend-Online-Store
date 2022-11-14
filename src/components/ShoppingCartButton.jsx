@@ -6,7 +6,7 @@ import carticon from '../images/cart.png';
 
 class ShoppingCartButton extends Component {
   render() {
-    const { cart } = this.props;
+    const { cart, totalProducts } = this.props;
 
     return (
       <div className="div-cart">
@@ -26,7 +26,7 @@ class ShoppingCartButton extends Component {
 
         </Link>
         <div className="container-quantity">
-          <p className="cart-quantity">03</p>
+          <p className="cart-quantity">{ totalProducts }</p>
         </div>
       </div>
     );
@@ -35,6 +35,7 @@ class ShoppingCartButton extends Component {
 
 ShoppingCartButton.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object),
+  totalProducts: PropTypes.number,
 }.isRequired;
 
 export default ShoppingCartButton;

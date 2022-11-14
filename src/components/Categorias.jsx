@@ -19,7 +19,7 @@ class Categorias extends Component {
     return (
       <div className="slider-container">
         <div className="text">
-          <h5>Selecione uma categoria</h5>
+          <h5>Compre por categoria</h5>
         </div>
         <Slider { ...settings } className="categories-slider">
           { allCategories.map((category) => (

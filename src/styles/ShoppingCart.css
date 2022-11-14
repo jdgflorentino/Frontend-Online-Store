@@ -1,0 +1,132 @@
+.container-cart {
+  align-items: center;
+  background: #f0f2f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 2360px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  width: 100%;
+}
+
+.container-header {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  padding: 20px 40px;
+  position: relative;
+  width: 1260px;
+}
+
+.cart-panel {
+  box-shadow: 0 1 px 3 px 0 rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0;
+  width: 100%;
+}
+
+.card-items {
+  background-color: white;
+  position: relative;
+}
+
+.container-item {
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  padding: 1rem;
+}
+
+.container-item img {
+  border-radius: 6px;
+  height: 92px;
+  min-width: 92px;
+  object-fit: scale-down;
+  padding: 7px;
+  width: 92px;
+}
+
+.infos {
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.price-button {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cart-btn {
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 0 3px #dedede;
+  color: #ff6000;
+  display: flex;
+  font-size: 17px;
+  font-weight: 400;
+  height: 28px;
+  justify-content: center;
+  line-height: 18px;
+  vertical-align: middle;
+  width: 28px;
+}
+
+.quantity {
+  border: none;
+  border-radius: 0.25rem;
+  color: #5d6671;
+  font-size: 17px;
+  font-weight: 400;
+  height: 30px;
+  line-height: 1.5;
+  max-width: 30px;
+  padding: 0;
+  text-align: center;
+}
+
+.form {
+  background-color: #f7f7f8;
+  border-radius: 50px;
+  display: flex;
+  height: 34px;
+  justify-content: space-between;
+  margin-left: auto;
+  padding: 3px;
+  width: 90px;
+}
+
+.checkout {
+  padding: 16px;
+  width: 100%;
+}
+
+.content-checkout {
+  background-color: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  width: 100%;
+}

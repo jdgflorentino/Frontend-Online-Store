@@ -108,14 +108,13 @@ render() {
                       {' '}
                       {element.price}
                     </p>
-                    {element.shipping.free_shipping
-                  && <p
-                    className="shipping"
-                    data-testid="free-shipping"
-                  >
-                    Frete Grátis
-                     </p>}
-                    <p className="title">
+                    {
+                      element.shipping.free_shipping
+                        ? (<p className="shipping" data-testid="free-shipping">
+                          Frete Grátis
+                        </p>) : null
+                    }
+                    <p className="product-title">
                       {element.title}
                     </p>
                   </div>

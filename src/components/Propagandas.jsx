@@ -12,6 +12,7 @@ class Propagandas extends Component {
       autoplaySpeed: 2000,
       slidesToShow: 3,
       slidesToScroll: 1,
+      arrows: false,
     };
     return (
       <div className="body-container">

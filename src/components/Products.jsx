@@ -15,7 +15,7 @@ class Products extends Component {
             <div
               key={ element.id }
               data-testid="product"
-              className="products-container--inner"
+              className="container-inner"
             >
               <div className="card">
                 <Link
@@ -40,14 +40,18 @@ class Products extends Component {
                       {' '}
                       {element.price}
                     </p>
-                    {element.shipping.free_shipping &&
-                      <p
+                    {element.shipping.free_shipping
+                      && <p
                         className="shipping"
                         data-testid="free-shipping"
                       >
+                        {' '}
                         Frete Grátis
-                      </p>}
-                    <p className="title">
+                        {' '}
+
+                      </p>
+                    }
+                    <p className="product-title">
                       {element.title}
                     </p>
                   </div>
