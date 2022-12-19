@@ -1,6 +1,6 @@
 .container-home {
   align-items: center;
-  background: #f0f2f5;
+  background: #ecf3fb;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: 1050px;
+  height: 820px;
   margin-top: 20px;
   max-width: 1220px;
   padding: 15px;
@@ -63,7 +63,6 @@ main {
 }
 
 .div-nav {
-  background-color: #f17e3a;
   display: inline-block;
   height: 36px;
   margin-top: 86px;
@@ -71,7 +70,6 @@ main {
 }
 
 .container-categories {
-  background-color: #fabc3b;
   display: block;
   height: 56px;
   width: 1260px;

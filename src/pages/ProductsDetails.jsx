@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { getProductsFromProductId } from '../services/api';
 import Header from '../components/Header';
 import '../styles/ProductsDetails.css';
-import heart1 from '../images/heart1.png';
 import delivery from '../images/fast-delivery.png';
 
 class ProductsDetails extends Component {
@@ -20,6 +19,7 @@ class ProductsDetails extends Component {
       img_url: '',
       cart,
       haveShipping: false,
+      totalProducts: 0,
     };
   }
 
@@ -47,6 +47,11 @@ class ProductsDetails extends Component {
       this.setState({ cart });
     }
   }
+
+    updateLocalStorage = () => {
+      const { totalProducts } = this.state;
+      localStorage.setItem('totalProducts', totalProducts + 1);
+    };
 
     clickDecrease = ({ target }) => {
       const { itensCart } = this.state;
@@ -77,7 +82,6 @@ class ProductsDetails extends Component {
     cart, haveShipping, img_url } = this.state;
     return (
       <div className="container-home">
-
         <header className="ret-header">
           <Header
             cart={ cart }
@@ -93,15 +97,17 @@ class ProductsDetails extends Component {
               <a href="/" className="second">Vender um igual</a>
             </div>
             <div className="panel">
-              <div className="column">
+              <div className="img-column">
                 <img src={ img_url } alt={ title } className="img-detail" />
               </div>
-              <div className="column">
+              <div className="infos-column">
                 <div className="row-name">
                   <h1 data-testid="product-detail-name">
+
                     {title}
+
                   </h1>
-                  <img src={ heart1 } alt="favoritar" className="favorite" />
+
                 </div>
                 <div className="condition">
                   <h6> Novo </h6>
@@ -112,38 +118,15 @@ class ProductsDetails extends Component {
                   <span className="fraction">{price}</span>
                 </div>
                 <div className="stock">Estoque disponível</div>
-                {haveShipping
-                && <div className="delivery">
-                  <img src={ delivery } alt="delivery" />
-                  <h6 data-testid="free-shipping">Frete Grátis</h6>
-                </div>}
-                <div className="form">
-                  <button
-                    className="cart-btn"
-                    type="button"
-                    data-testid="product-decrease-quantity"
-                    onClick={ this.clickDecrease }
-                    id={ id }
-                  >
-                                  -
-                  </button>
-                  <p
-                    className="quantity"
-                    data-testid="shopping-cart-product-quantity"
-                  >
-                    {/* { quantity } */}
-                  </p>
-                  <button
-                    className="cart-btn"
-                    type="button"
-                    data-testid="product-increase-quantity"
-                    onClick={ this.clickIncrease }
-                    id={ id }
-                  >
-                                  +
-                  </button>
 
-                </div>
+                {
+                  haveShipping
+
+                  && <div className="delivery">
+                    <img src={ delivery } alt="delivery" />
+                    <h6 data-testid="free-shipping">Frete Grátis</h6>
+                  </div>
+                }
                 <button
                   type="button"
                   onClick={ this.addCart }
@@ -154,10 +137,10 @@ class ProductsDetails extends Component {
               Enviar para o carrinho
                 </button>
               </div>
-
             </div>
 
           </div>
+
         </div>
       </div>
     );

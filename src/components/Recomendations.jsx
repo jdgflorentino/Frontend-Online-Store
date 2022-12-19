@@ -11,20 +11,20 @@ class Recomendations extends Component {
     this.state = {
       products: [{
         id: 'MLB1834126211',
-        thumbnail: 'http://http2.mlstatic.com/D_662957-MLB45323056419_032021-O.jpg',
+        thumbnail: 'http://http2.mlstatic.com/D_707026-MLA40193696598_122019-I.jpg',
         title: 'Fone De Ouvido Gamer Headphone Microfone Melhor Pc Ps4 Xbox ',
-        original_price: 49.8,
         price: 49.19,
         shipping:
           { free_shipping: false } },
-      { id: 'MLB2604914301', thumbnail: 'http://http2.mlstatic.com/D_697940-MLA48760527650_012022-I.jpg', title: 'Monitor Curvo Samsung T55 C32t550 Led 32   Dark Blue Gray 100v/240v', original_price: 2199, price: 2199, shipping: { free_shipping: true } },
-      { id: 'MLB2166418208', thumbnail: 'http://http2.mlstatic.com/D_929380-MLB49022554538_022022-O.jpg', title: 'Notebook Dell Gamer G15 5511 I7 11th 16gb 512ssd Rtx3060', original_price: null, price: 10405, shipping: { free_shipping: true } }],
+      { id: 'MLB2604914301', thumbnail: 'http://http2.mlstatic.com/D_869832-MLA48131216615_112021-I.jpg', title: 'Monitor Curvo Samsung T55 C32t550 Led 32   Dark Blue Gray 100v/240v', price: 2199, shipping: { free_shipping: true } },
+      { id: 'MLB3060574177', thumbnail: 'http://http2.mlstatic.com/D_905514-MLA45654683948_042021-I.jpg', title: 'Cadeira De Escritório Thunderx3 Tgc12 Gamer Ergonômica  Preta Com Estofado De Couro Sintético', price: 1449, shipping: { free_shipping: true } }],
     };
   }
 
 getProducts = async ({ target }) => {
   const { textContent } = target;
   const results = await getProductsFromQuery(textContent);
+  console.log(results);
   this.setState({ products: results.results });
 }
 
@@ -94,15 +94,14 @@ render() {
                   } }
                   data-testid="product-detail-link"
                 >
-                  <img
-                    src={ element.thumbnail }
-                    alt={ element.title }
-                    className="card-img"
-                  />
+                  <div className="div-img">
+                    <img
+                      src={ element.thumbnail }
+                      alt={ element.title }
+                    />
+
+                  </div>
                   <div className="div-info-text">
-                    <span className="old-price">
-                      {`R$ ${element.original_price}`}
-                    </span>
                     <p className="curr-price">
                       R$
                       {' '}
@@ -112,22 +111,25 @@ render() {
                       element.shipping.free_shipping
                         ? (<p className="shipping" data-testid="free-shipping">
                           Frete Grátis
-                        </p>) : null
+                           </p>) : null
                     }
                     <p className="product-title">
                       {element.title}
                     </p>
                   </div>
                 </Link>
-                <button
-                  type="button"
-                  data-testid="product-add-to-cart"
-                  onClick={ addCart }
-                  id={ element.id }
-                  className="btn-buy"
-                >
-                  + ADD CART
-                </button>
+                <div className="div-btn">
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ addCart }
+                    id={ element.id }
+                    className="btn-buy"
+                  >
+                    + ADD CART
+                  </button>
+
+                </div>
               </div>
             ))}
         </div>

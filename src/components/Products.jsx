@@ -26,19 +26,18 @@ class Products extends Component {
                   } }
                   data-testid="product-detail-link"
                 >
-                  <img
-                    src={ element.thumbnail }
-                    alt={ element.title }
-                    className="card-img"
-                  />
+                  <div className="div-img">
+                    <img
+                      src={ element.thumbnail }
+                      alt={ element.title }
+                    />
+
+                  </div>
                   <div className="div-info-text">
-                    <span className="old-price">
-                      {`R$ ${element.original_price}`}
-                    </span>
                     <p className="curr-price">
                       R$
                       {' '}
-                      {element.price}
+                      <span>{element.price}</span>
                     </p>
                     {element.shipping.free_shipping
                       && <p
@@ -49,22 +48,24 @@ class Products extends Component {
                         Frete Grátis
                         {' '}
 
-                      </p>
-                    }
+                      </p>}
                     <p className="product-title">
                       {element.title}
                     </p>
                   </div>
                 </Link>
-                <button
-                  type="button"
-                  data-testid="product-add-to-cart"
-                  onClick={ addCart }
-                  id={ element.id }
-                  className="btn-buy"
-                >
-                  + ADD CART
-                </button>
+                <div className="div-btn">
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ addCart }
+                    id={ element.id }
+                    className="btn-buy"
+                  >
+                    + ADD CART
+                  </button>
+
+                </div>
               </div>
             </div>
           ))}
