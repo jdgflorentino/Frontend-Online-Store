@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Products from './Products';
 import '../styles/Pagination.css';
 
-const FIFTEEN = 15;
+const FIFTEEN = 10;
 const FOUR = 4;
 
 class Pagination extends Component {

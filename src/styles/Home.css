@@ -1,23 +1,23 @@
 .container-home {
   align-items: center;
-  background: #f0f2f5;
+  background: #ecf3fb;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  height: 2360px;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   top: 0;
   width: 100%;
 }
 
-.container-header {
+.ret-header {
   align-items: center;
   background-color: white;
   display: flex;
   flex-direction: row;
-  height: 140px;
-  padding: 40px 80px;
+  height: 150px;
+  padding: 20px 40px 40px;
   position: relative;
   width: 1260px;
 }
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: 1500px;
+  height: 820px;
   margin-top: 20px;
   max-width: 1220px;
   padding: 15px;
@@ -40,8 +40,8 @@
   border-radius: 0.4rem;
   margin-top: 40px;
   max-width: 1260px;
-  padding-top: 20px;
   padding-left: 10px;
+  padding-top: 20px;
 }
 
 a:link { text-decoration: none; }
@@ -63,7 +63,6 @@ main {
 }
 
 .div-nav {
-  background-color: #f17e3a;
   display: inline-block;
   height: 36px;
   margin-top: 86px;
@@ -71,7 +70,6 @@ main {
 }
 
 .container-categories {
-  background-color: #fabc3b;
   display: block;
   height: 56px;
   width: 1260px;

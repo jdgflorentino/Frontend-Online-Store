@@ -15,7 +15,7 @@ class Products extends Component {
             <div
               key={ element.id }
               data-testid="product"
-              className="products-container--inner"
+              className="container-inner"
             >
               <div className="card">
                 <Link
@@ -26,41 +26,46 @@ class Products extends Component {
                   } }
                   data-testid="product-detail-link"
                 >
-                  <img
-                    src={ element.thumbnail }
-                    alt={ element.title }
-                    className="card-img"
-                  />
+                  <div className="div-img">
+                    <img
+                      src={ element.thumbnail }
+                      alt={ element.title }
+                    />
+
+                  </div>
                   <div className="div-info-text">
-                    <span className="old-price">
-                      {`R$ ${element.original_price}`}
-                    </span>
                     <p className="curr-price">
                       R$
                       {' '}
-                      {element.price}
+                      <span>{element.price}</span>
                     </p>
-                    {element.shipping.free_shipping &&
-                      <p
+                    {element.shipping.free_shipping
+                      && <p
                         className="shipping"
                         data-testid="free-shipping"
                       >
+                        {' '}
                         Frete Grátis
+                        {' '}
+
                       </p>}
-                    <p className="title">
+                    <p className="product-title">
                       {element.title}
                     </p>
                   </div>
                 </Link>
-                <button
-                  type="button"
-                  data-testid="product-add-to-cart"
-                  onClick={ addCart }
-                  id={ element.id }
-                  className="btn-buy"
-                >
-                  + ADD CART
-                </button>
+                <div className="div-btn">
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ addCart }
+                    id={ element.id }
+                    className="btn-buy"
+                  >
+                    + ADD CART
+                  </button>
+
+                </div>
               </div>
             </div>
           ))}

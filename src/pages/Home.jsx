@@ -19,6 +19,7 @@ class Home extends Component {
       resultApi: [],
       cart: [],
       categorie: '',
+      totalProducts: 0,
     };
   }
 
@@ -30,14 +31,12 @@ class Home extends Component {
     searchButton = async () => {
       const { inputValue } = this.state;
       const results = await getProductsFromQuery(inputValue);
-      console.log(results.results);
       this.setState({ resultApi: results.results });
     }
 
   handleCategory = async ({ target }) => {
     const { id } = target;
     const data = await getProductsFromCategory(id);
-    console.log(data.results);
     this.setState({ resultApi: data.results, categorie: target.textContent });
   }
 
@@ -47,23 +46,32 @@ class Home extends Component {
     const isInCart = cart.some((item) => item.id === itemCart.id);
     if (!isInCart) {
       itemCart.quantity = 1;
-      this.setState((prevState) => ({ cart: [...prevState.cart, itemCart] }));
+      this.setState(((prevState) => ({ cart: [...prevState.cart, itemCart] })),
+        this.updateLocalStorage());
     } else {
       itemCart.quantity += 1;
     }
+    this.setState(((prev) => ({ totalProducts: prev.totalProducts + 1 })),
+      this.updateLocalStorage());
   }
 
+  updateLocalStorage = () => {
+    const { totalProducts } = this.state;
+    localStorage.setItem('totalProducts', totalProducts + 1);
+  };
+
   render() {
-    const { resultApi, cart, categorie } = this.state;
+    const { resultApi, cart, categorie, totalProducts } = this.state;
     const { allCategories } = this.props;
 
     return (
       <div className="container-home">
-        <header className="container-header">
+        <header className="ret-header">
           <Header
             cart={ cart }
             getValue={ this.getValue }
             searchButton={ this.searchButton }
+            totalProducts={ totalProducts }
           />
         </header>
         <Categorias

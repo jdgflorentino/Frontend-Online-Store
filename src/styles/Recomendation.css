@@ -4,7 +4,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 450px;
   margin-top: 20px;
   padding: 10px 30px;
   width: 1260px;
@@ -57,7 +57,7 @@
 .link {
   background-color: white;
   border: none;
-  color: #f17e3a;
+  color: #223593;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -65,7 +65,7 @@
   line-height: 19px;
   text-align: left;
   text-decoration-line: underline;
-  padding: 10px;;
+  padding: 10px;
   width: 269px;
 }
 

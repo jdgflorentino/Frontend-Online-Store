@@ -21,19 +21,21 @@
 .container-search {
   flex-direction: column;
   height: 42px;
+  padding: 10px 0 0;
   top: 40px;
   width: 500px;
 }
 
 .container-cart {
-  background-color: #f17e3a;
+  background-color: #9bbbfc;
   border-radius: 10px;
   flex-direction: column;
   height: 35px;
+  padding: 10px 0 0;
   top: 40px;
   width: 95px;
 }
 
 .logo-page {
-  color: #f17e3a;
+  color: #9bbbfc;
 }
