@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
-import rainbow from '../images/rainbow.png';
+import rainbow from '../images/rainbows.png';
 import '../styles/ShoppingCart.css';
 
 class ShoppingCart extends Component {
@@ -22,8 +23,7 @@ class ShoppingCart extends Component {
   getPrice = () => {
     const { itensCart } = this.state;
     const price = itensCart.map((el) => el.price * el.quantity);
-    const totalPrice = price.reduce((a, b) => a + b);
-    console.log(totalPrice);
+    const totalPrice = price.reduce((a, b) => a + b, 0).toFixed(2);
     this.setState({ totalPrice });
   }
 
@@ -36,6 +36,7 @@ class ShoppingCart extends Component {
       item.quantity = 0;
     }
     this.setState({ itensCart: [...itensCart] });
+    this.getPrice();
   }
 
   clickIncrease = ({ target }) => {
@@ -45,21 +46,22 @@ class ShoppingCart extends Component {
       item.quantity += 1;
     }
     this.setState({ itensCart: [...itensCart] });
+    this.getPrice();
   }
 
   render() {
-    const { itensCart, totalPrice, products } = this.state;
+    const { itensCart, totalPrice } = this.state;
     return (
-      <div>
+      <div className="container-cart">
+        <header className="container-header">
+          <Link to="/" className="logo">
+            <img src={ rainbow } alt="Frontend Online Store" />
+          </Link>
+        </header>
         {itensCart.length === 0
-          ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
+          ? <p data-testid="shopping-cart-empty-message" className="empty">Seu carrinho está vazio</p>
           : (
             <div className="container-cart">
-              <header className="container-header">
-                <div className="logo">
-                  <img src={ rainbow } alt="rainbow" />
-                </div>
-              </header>
               <div className="cart-panel">
                 <div className="card-body">
                   <div className="card-items">
@@ -123,21 +125,23 @@ class ShoppingCart extends Component {
                 </div>
                 <div className="checkout">
                   <div className="content-checkout">
-                    <p>Checkout</p>
-                    <p>
-                      Produtos
-                      {`(${products})`}
-                    </p>
-                    <span>
-                      {`Você pagará R$
+                    <p className="price">Checkout</p>
+                    <p className="title">
+                      {`Valor total da compra R$
                       ${totalPrice}
                       `}
-                    </span>
+                    </p>
                   </div>
-
-                  <button type="button">Finalizar Compra</button>
+                  <div className="container-btn">
+                    <button
+                      type="button"
+                      className="btn-finalizar"
+                      disabled={ itensCart.length === 0 }
+                    >
+                      Finalizar Compra
+                    </button>
+                  </div>
                 </div>
-
               </div>
               <footer className="container-footer">
                 <Footer />

@@ -1,3 +1,16 @@
+.container-page {
+  align-items: center;
+  background: #ecf3fb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  width: 100%;
+}
+
 .container-details {
   display: flex;
   flex-direction: column;
@@ -8,9 +21,10 @@
 
 .panel {
   background-color: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 0.4rem;
   display: grid;
   grid-template-columns: 30fr 55fr 5fr;
+  width: 1260px;
 }
 
 .row-links {
@@ -21,7 +35,7 @@
 }
 
 a {
-  color: #4741a6;
+  color: #223593;
   font-size: 14px;
   padding: 2.5px 0;
   text-decoration: none;
@@ -89,13 +103,13 @@ a {
 }
 
 h6 {
-  color: #f17e3a;
+  color: #54595f;
   font-size: 16px;
 
 }
 
 .btn-cart {
-  background-color: #4741a6;
+  background-color: #223593;
   border: none;
   border-radius: 4px;
   color: white;

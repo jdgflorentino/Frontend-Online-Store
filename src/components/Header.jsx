@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Search from './Search';
 import ShoppingCartButton from './ShoppingCartButton';
@@ -11,7 +12,9 @@ class Header extends Component {
     return (
       <div className="container-header-infos">
         <div className="container-logo">
-          <img src={ rainbow } alt="rainbow" />
+          <Link to="/" className="logo">
+            <img src={ rainbow } alt="Frontend Online Store" />
+          </Link>
           <h6 className="logo-page">Frontend</h6>
           <h6 className="logo-page">Online Store</h6>
         </div>

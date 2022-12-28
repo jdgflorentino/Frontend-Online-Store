@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProductsFromProductId } from '../services/api';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../styles/ProductsDetails.css';
 import delivery from '../images/fast-delivery.png';
 
@@ -26,6 +27,7 @@ class ProductsDetails extends Component {
   async componentDidMount() {
     const { match } = this.props;
     const productResponses = await getProductsFromProductId(match.params.id);
+    console.log(productResponses);
     const shipping = productResponses.shipping.free_shipping;
     const img = Object.entries(productResponses.pictures[0])[1][1];
     this.setState({
@@ -35,43 +37,25 @@ class ProductsDetails extends Component {
     });
   }
 
-  addCart = () => {
+  addCart = ({ target }) => {
     const { productInfos, cart } = this.state;
-    const product = cart.find((item) => item.id === productInfos.id);
+    const product = cart.find((item) => item.id === target.id);
     if (!product) {
       productInfos.quantity = 1;
-      this.setState((prevState) => ({ cart: [...prevState.cart, productInfos] }));
+      this.setState(((prevState) => ({ cart: [...prevState.cart, productInfos] })),
+        this.updateLocalStorage());
     } else {
-      const index = cart.indexOf(product);
-      cart[index].quantity += 1;
-      this.setState({ cart });
+      productInfos.quantity += 1;
     }
+    this.setState(((prev) => ({ totalProducts: prev.totalProducts + 1 })),
+      this.updateLocalStorage());
   }
 
-    updateLocalStorage = () => {
-      const { totalProducts } = this.state;
-      localStorage.setItem('totalProducts', totalProducts + 1);
-    };
-
-    clickDecrease = ({ target }) => {
-      const { itensCart } = this.state;
-      const item = itensCart.find((e) => e.id === target.id);
-      if (item.quantity > 0) {
-        item.quantity -= 1;
-      } else {
-        item.quantity = 0;
-      }
-      this.setState({ itensCart: [...itensCart] });
-    }
-
-  clickIncrease = ({ target }) => {
-    const { itensCart } = this.state;
-    const item = itensCart.find((e) => e.id === target.id);
-    if (item.quantity < item.available_quantity) {
-      item.quantity += 1;
-    }
-    this.setState({ itensCart: [...itensCart] });
-  }
+  updateLocalStorage = () => {
+    const { totalProducts } = this.state;
+    console.log(totalProducts);
+    localStorage.setItem('totalProducts', totalProducts + 1);
+  };
 
   render() {
     const { productInfos: {
@@ -79,15 +63,15 @@ class ProductsDetails extends Component {
       id,
       price,
       sold_quantity },
-    cart, haveShipping, img_url } = this.state;
+    cart, haveShipping, img_url, totalProducts } = this.state;
     return (
-      <div className="container-home">
+      <div className="container-page">
         <header className="ret-header">
           <Header
             cart={ cart }
             getValue={ this.getValue }
             searchButton={ this.searchButton }
-            // totalProducts={ totalProducts }
+            totalProducts={ totalProducts }
           />
         </header>
         <div className="container-details">
@@ -142,6 +126,9 @@ class ProductsDetails extends Component {
           </div>
 
         </div>
+        <footer className="container-footer">
+          <Footer />
+        </footer>
       </div>
     );
   }

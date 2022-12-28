@@ -27,13 +27,13 @@ class Categorias extends Component {
               key={ category.id }
               className="card-slider"
             >
-              <div className="card-img-container">
-                <img
-                  src={ require(`../images/${category.name}.png`) }
-                  alt={ category.name }
-                  className="img-category"
-                />
-              </div>
+
+              <img
+                src={ require(`../images/${category.name}.png`) }
+                alt={ category.name }
+                className="img-category"
+              />
+
               <button
                 id={ category.id }
                 type="button"
