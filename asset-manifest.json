@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/jdgflorentino/Frontend-Online-Store/static/css/main.7e0e3152.chunk.css",
+    "main.js": "/jdgflorentino/Frontend-Online-Store/static/js/main.70ccf129.chunk.js",
+    "main.js.map": "/jdgflorentino/Frontend-Online-Store/static/js/main.70ccf129.chunk.js.map",
+    "runtime-main.js": "/jdgflorentino/Frontend-Online-Store/static/js/runtime-main.6ebc9332.js",
+    "runtime-main.js.map": "/jdgflorentino/Frontend-Online-Store/static/js/runtime-main.6ebc9332.js.map",
+    "static/css/2.2d6c900d.chunk.css": "/jdgflorentino/Frontend-Online-Store/static/css/2.2d6c900d.chunk.css",
+    "static/js/2.a633813e.chunk.js": "/jdgflorentino/Frontend-Online-Store/static/js/2.a633813e.chunk.js",
+    "static/js/2.a633813e.chunk.js.map": "/jdgflorentino/Frontend-Online-Store/static/js/2.a633813e.chunk.js.map",
+    "index.html": "/jdgflorentino/Frontend-Online-Store/index.html",
+    "precache-manifest.1d54e8fa911fe3e41a6fc1b7fec60d44.js": "/jdgflorentino/Frontend-Online-Store/precache-manifest.1d54e8fa911fe3e41a6fc1b7fec60d44.js",
+    "service-worker.js": "/jdgflorentino/Frontend-Online-Store/service-worker.js",
+    "static/css/2.2d6c900d.chunk.css.map": "/jdgflorentino/Frontend-Online-Store/static/css/2.2d6c900d.chunk.css.map",
+    "static/css/main.7e0e3152.chunk.css.map": "/jdgflorentino/Frontend-Online-Store/static/css/main.7e0e3152.chunk.css.map",
+    "static/js/2.a633813e.chunk.js.LICENSE.txt": "/jdgflorentino/Frontend-Online-Store/static/js/2.a633813e.chunk.js.LICENSE.txt",
+    "static/js/main.70ccf129.chunk.js.LICENSE.txt": "/jdgflorentino/Frontend-Online-Store/static/js/main.70ccf129.chunk.js.LICENSE.txt",
+    "static/media/Compre.png": "/jdgflorentino/Frontend-Online-Store/static/media/Compre.d8041e46.png",
+    "static/media/Gamer.png": "/jdgflorentino/Frontend-Online-Store/static/media/Gamer.66a0be0f.png",
+    "static/media/Gamer2.png": "/jdgflorentino/Frontend-Online-Store/static/media/Gamer2.3fa66bc4.png",
+    "static/media/Moda.png": "/jdgflorentino/Frontend-Online-Store/static/media/Moda.e79b5ff8.png",
+    "static/media/mercado.png": "/jdgflorentino/Frontend-Online-Store/static/media/mercado.525c3e4f.png",
+    "static/media/slick-theme.css": "/jdgflorentino/Frontend-Online-Store/static/media/slick.f97e3bbf.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ebc9332.js",
+    "static/css/2.2d6c900d.chunk.css",
+    "static/js/2.a633813e.chunk.js",
+    "static/css/main.7e0e3152.chunk.css",
+    "static/js/main.70ccf129.chunk.js"
+  ]
+}
