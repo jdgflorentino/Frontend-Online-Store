@@ -10,3 +10,5 @@ Projeto desenvolvido em grupo com a metodologia ágil _Kanban_, em um cenário m
 
 
 Se você quiser aprender mais sobre a API do _Mercado Livre_, veja a [documentação](https://developers.mercadolivre.com.br/pt_br/itens-e-buscas).
+
+[Clique aqui](https://jdgflorentino.github.io/Frontend-Online-Store/) e veja a aplicação no seu navegador.
