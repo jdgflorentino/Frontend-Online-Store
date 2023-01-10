@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     const { allCategories } = this.state;
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={ process.env.PUBLIC_URL }>
         <Route
           exact
           path="/"
